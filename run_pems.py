@@ -15,7 +15,7 @@ parser.add_argument('--norm_method', type=str, default='z_score')
 parser.add_argument('--normtype', type=int, default=0)
 
 ### -------  device settings --------------
-parser.add_argument('--use_gpu', type=bool, default=True, help='use gpu')
+parser.add_argument('--use_gpu', type=bool, default=False, help='use gpu')
 parser.add_argument('--use_multi_gpu', action='store_true', help='use multiple gpus', default=False)
 parser.add_argument('--gpu', type=int, default=0, help='gpu')
 parser.add_argument('--device', type=str, default='cuda:0')
@@ -71,8 +71,8 @@ if __name__ == '__main__':
     torch.manual_seed(4321)  # reproducible
     torch.cuda.manual_seed_all(4321)
     torch.backends.cudnn.benchmark = False
-    torch.backends.cudnn.deterministic = True  # Can change it to False --> default: False
-    torch.backends.cudnn.enabled = True
+    torch.backends.cudnn.deterministic = False #True  # Can change it to False --> default: False
+    torch.backends.cudnn.enabled = False
 
     Exp=Exp_pems
     exp=Exp(args)
